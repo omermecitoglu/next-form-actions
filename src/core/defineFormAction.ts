@@ -52,7 +52,16 @@ export function defineFormAction<
     if (!validation.success) {
       return bundleErrors(validation.error.issues);
     }
-    return await definition.action(validation.data as SchemaO)(...customArgs);
+    try {
+      return await definition.action(validation.data as SchemaO)(...customArgs);
+    } catch (error) {
+      if (error && typeof error === "object" && "isDisplayMessage" in error && "messageType" in error && "message" in error) {
+        return {
+          [error.messageType as string]: error.message as string,
+        };
+      }
+      throw error;
+    }
   }
   return handler as FormAction<Args>;
 }
