@@ -20,6 +20,35 @@ To install this package
 npm install @omer-x/next-form-actions
 ```
 
+## Usage
+
+```typescript
+"use server";
+import { defineFormAction, displayMessage } from "@omer-x/next-form-actions";
+import z from "zod";
+import { authMiddleware } from "./middlewares/session";
+
+export const createUser = defineFormAction({
+  middlewares: [authMiddleware],
+  schema: z.object({
+    foo: z.string(),
+  }),
+  action: input => (async () => {
+    console.log(input); // { foo: "bar" }
+    try {
+      // try to create a user
+
+      displayMessage("success", "ok!");
+    } catch (error) {
+      if (error === "BAD_REQUEST") {
+        displayMessage("warning", "you are doing something wrong");
+      }
+      displayMessage("error", "unknown error");
+    }
+  }),
+});
+```
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
