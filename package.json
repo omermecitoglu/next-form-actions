@@ -1,18 +1,22 @@
 {
-  "name": "@omer-x/node-module",
+  "name": "@omer-x/next-form-actions",
   "version": "1.0.0",
-  "description": "UPDATE_HERE_WITH_A_MEANINGFUL_DESCRIPTION",
+  "description": "Provides helper functions to define a type-safe React server action for forms, validating form data with Zod and handling errors internally.",
   "keywords": [
-    "typescript"
+    "nextjs",
+    "server-actions",
+    "middlewares",
+    "form-validation",
+    "zod"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omermecitoglu/node-module.git"
+    "url": "git+https://github.com/omermecitoglu/next-form-actions.git"
   },
   "bugs": {
-    "url": "https://github.com/omermecitoglu/node-module/issues"
+    "url": "https://github.com/omermecitoglu/next-form-actions/issues"
   },
-  "homepage": "https://github.com/omermecitoglu/node-module#readme",
+  "homepage": "https://github.com/omermecitoglu/next-form-actions#readme",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -42,17 +46,17 @@
     "dev": "tsup --watch",
     "build": "tsup"
   },
-  "dependencies": {
-    "react": "latest"
+  "peerDependencies": {
+    "zod": "^4"
   },
   "devDependencies": {
     "@omer-x/eslint-config": "^2.2.6",
-    "@types/node": "^25.0.3",
-    "@vitest/coverage-v8": "^4.0.16",
+    "@types/node": "^25.0.10",
+    "@vitest/coverage-v8": "^4.0.17",
     "eslint": "^9.39.2",
     "semantic-release": "^25.0.2",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.17"
   }
 }
