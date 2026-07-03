@@ -28,14 +28,15 @@
   },
   "license": "MIT",
   "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "files": [
     "dist/"
   ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     }
   },
   "scripts": {
@@ -43,8 +44,8 @@
     "lint:fix": "eslint --fix --flag unstable_native_nodejs_ts_config",
     "test": "vitest run --coverage",
     "test:watch": "vitest --coverage",
-    "dev": "tsup --watch",
-    "build": "tsup"
+    "dev": "tsdown --watch",
+    "build": "tsdown"
   },
   "peerDependencies": {
     "zod": "^4"
@@ -55,7 +56,7 @@
     "@vitest/coverage-v8": "^4.1.9",
     "eslint": "^9.39.2",
     "semantic-release": "^25.0.5",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.22.3",
     "typescript": "^5.9.3",
     "vitest": "^4.1.9"
   }
