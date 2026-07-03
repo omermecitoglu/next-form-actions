@@ -15,6 +15,16 @@ export function solveKnownIssues<T extends Record<string, unknown>>(
             [location]: parseFloat(input[location as string] as string),
           });
         }
+        if (issue.expected === "boolean" && issue.message.includes("expected boolean, received string")) {
+          const [location] = issue.path;
+          const value = input[location as string] as string;
+          if (value === "true" || value === "false") {
+            return solveKnownIssues(schema, {
+              ...input,
+              [location]: value === "true",
+            });
+          }
+        }
       }
     }
   }
