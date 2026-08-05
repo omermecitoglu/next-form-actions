@@ -48,7 +48,7 @@ export function defineFormAction<
     const formData = allParams[allParams.length - 1] as FormData;
     const customArgs = allParams.slice(0, allParams.length - 2) as Args;
 
-    const validation = solveKnownIssues(definition.schema.strip(), Object.fromEntries(formData.entries()));
+    const validation = solveKnownIssues(definition.schema, Object.fromEntries(formData.entries()));
     if (!validation.success) {
       return bundleErrors(validation.error.issues);
     }
